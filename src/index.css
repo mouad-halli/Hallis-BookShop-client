@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+html {
+	scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    /* background-color: #050A30; */
+}
+  
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 8px slategrey;
+}
+
+::-webkit-scrollbar-thumb {
+    /* background: red; */
+    box-shadow: inset 0 0 14px #3b82f4;
+    border-radius: 10px;
+}
+
+/* Price Range */
+input[type="range"]::-webkit-slider-thumb {
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  @apply bg-slate-800/90;
+
+  /* @apply w-6 h-6 appearance-none pointer-events-auto; */
+}
