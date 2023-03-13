@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux'
 import { createSearchParams, useNavigate } from 'react-router-dom'
-import { IUser, selectUser } from '../../app/userSlice'
+import { selectUser } from '../../app/userSlice'
 import { useComponentVisible } from '../../hooks/useComponentVisibleHook'
 import { useState} from 'react'
 import { bookGenres } from '../CreateOrUpdateListing/useCreateOrUpdateListingHook'
+import { IUser } from '../../@types/user'
 
 export const useNavBarHook = () => {
 
