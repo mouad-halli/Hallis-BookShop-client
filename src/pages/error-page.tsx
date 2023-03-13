@@ -4,7 +4,7 @@ export const ErrorPage = () => {
     const error: any = useRouteError();
 
     return (
-        <div className="h-screen w-full flex items-center justify-center bg-cover bg-center bg-no-repeat bg-[url('/public/imgs/elo.jpg')]">
+        <div className="h-screen w-full flex items-center justify-center bg-cover bg-center bg-no-repeat bg-[url('/imgs/elo.jpg')]">
             <div className="flex flex-col items-center gap-y-20">
                 <div className="flex flex-col items-center gap-y-2">
                     <h1 className="text-6xl text-white">PAGE NOT FOUND</h1>

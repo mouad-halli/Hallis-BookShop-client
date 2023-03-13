@@ -18,12 +18,15 @@ import { getLastAddedBooks } from '../../api/bookAPI'
 import { HomeSlider } from './HomeSlider'
 import { motion } from 'framer-motion'
 import { CardsSlider } from './CardsSlider'
-import { Book, Seller } from '../ProductPage/useProductPageHook'
+import { Seller } from '../../@types/seller'
+import { Book } from '../../@types/book'
 
 export const Home = () => {
 
     const [sellers, setSellers] = useState<Seller[]>([])
     const [lastAddedBooks, setLastAddedBooks] = useState<Book[]>([])
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchSellers = async () => {
@@ -49,6 +52,7 @@ export const Home = () => {
             <div className='w-full h-full flex flex-col items-center justify-center'>
                 <div className='w-4/6 h-full flex flex-wrap justify-evenly gap-y-6'>
                     <motion.div className='w-[14rem] h-[13rem] flex flex-col gap-y-2 items-center p-6 text-5xl drop-shadow-lg shadow-md rounded-xl duration-100 ease-linear cursor-pointer'
+                        onClick={() => navigate('search?type=by-genre&q=Fantasy')}
                         whileHover={{ scale: 1.1 }}
                         initial={{ x: -window.innerWidth }}
                         animate={{ x: 0, transition: {delay: 0.7} }}
@@ -58,6 +62,7 @@ export const Home = () => {
                         <span className='text-base pt-3'>discover</span>
                     </motion.div>
                     <motion.div className='w-[14rem] h-[13rem] flex flex-col gap-y-2 items-center p-6 text-5xl drop-shadow-lg shadow-md rounded-xl duration-100 ease-linear cursor-pointer'
+                        onClick={() => navigate('search?type=by-genre&q=Mystery')}
                         whileHover={{ scale: 1.1 }}
                         initial={{ x: -window.innerWidth }}
                         animate={{ x: 0, transition: {delay: 0.5} }}
@@ -67,6 +72,7 @@ export const Home = () => {
                         <span className='text-base pt-3'>discover</span>
                     </motion.div>
                     <motion.div className='w-[14rem] h-[13rem] flex flex-col gap-y-2 items-center p-6 text-5xl drop-shadow-lg shadow-md rounded-xl duration-100 ease-linear cursor-pointer'
+                        onClick={() => navigate('search?type=by-genre&q=Classics')}
                         whileHover={{ scale: 1.1 }}
                         initial={{ x: -window.innerWidth }}
                         animate={{ x: 0, transition: {delay: 0.3} }}
@@ -76,6 +82,7 @@ export const Home = () => {
                         <span className='text-base pt-3'>discover</span>
                     </motion.div>
                     <motion.div className='w-[14rem] h-[13rem] flex flex-col gap-y-2 items-center p-6 text-5xl drop-shadow-lg shadow-md rounded-xl duration-100 ease-linear cursor-pointer'
+                        onClick={() => navigate('search?type=by-genre&q=Romance')}
                         whileHover={{ scale: 1.1 }}
                         initial={{ x: -window.innerWidth }}
                         animate={{ x: 0, transition: {delay: 0} }}

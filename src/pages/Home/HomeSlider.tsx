@@ -4,12 +4,14 @@ import { Scrollbar, Autoplay } from "swiper";
 import "swiper/css/scrollbar";
 import { Children } from 'react';
 import { motion } from 'framer-motion';
+import { Book } from '../../@types/book';
 
 export const HomeSlider = (props: any) => {
 
     const { products } = props
 
     const navigate = useNavigate()
+
 
     return (
         <Swiper
@@ -21,9 +23,10 @@ export const HomeSlider = (props: any) => {
                 disableOnInteraction: false,
             }}
             modules={[Scrollbar, Autoplay]}
+            watchOverflow={true}
             className=" w-full lg:max-w-[70%] xl:max-w-[60%] h-[35rem]"
         >
-            {Children.toArray(products.map((product: any) => (
+            {Children.toArray(products.map((product: Book) => (
                 <SwiperSlide className=' p-6 cursor-grab active:cursor-grabbing'>
                     <div className='relative h-full w-full md:flex rounded-xl overflow-hidden font-bold shadow-lg shadow-slate-300 md:shadow-none'>
                         <motion.img className=' md:hidden absolute object-cover object-center h-full w-full' src={product.imgPath}

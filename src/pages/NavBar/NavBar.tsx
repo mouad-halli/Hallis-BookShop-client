@@ -22,7 +22,7 @@ export const NavBar = () => {
             animate={{ y: 0 }}
             transition={{ type: "spring", stiffness: 100 }}
         >
-            <div className=' max-w-[8rem]'>
+            <div className='w-full max-w-[8rem]'>
                 <img className=' transition duration-150 ease-in-out hover:scale-110 cursor-pointer' src={storeLogo} onClick={() => navigate('/')} />
             </div>
             <div className='w-full h-full flex items-center'>
@@ -82,7 +82,7 @@ export const NavBar = () => {
                         <div ref={userDropDownRef} className='relative'
                         >
                             <img
-                                className=' object-cover h-full w-full max-h-9 max-w-9 rounded-full cursor-pointer ring-1 ring-slate-700 ring-blue-700/60 hover:text-blue-600 hover:scale-110 transition ease-linear duration-150 '
+                                className=' object-cover h-9 w-9 rounded-full cursor-pointer ring-1 ring-slate-700 ring-blue-700/60 hover:text-blue-600 hover:scale-110 transition ease-linear duration-150 '
                                 src={ user?.imgPath }
                                 referrerPolicy={"no-referrer"}
                                 onClick={() => setIsUserDropDownVisible(!isUserDropDownVisible)}

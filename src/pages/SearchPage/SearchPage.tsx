@@ -5,8 +5,8 @@ import { $api } from '../../api/API'
 import { PriceRangeSlider } from './PriceRangeSlider'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { Book } from '../ProductPage/useProductPageHook'
 import { useSearchHook } from './useSearchHook'
+import { Book } from '../../@types/book'
 
 interface SearchProduct extends Book {
     display: boolean
@@ -42,8 +42,8 @@ export const SearchPage = () => {
                                 />
                             </div>
                             <div className='flex mx-4 gap-x-4'>
-                                <FaSortAmountDown className='text-xl' onClick={handleDisplayHeighPriceFirst} />
-                                <FaSortAmountDownAlt className='text-xl' onClick={handleDisplayLowPriceFirst}/>
+                                <FaSortAmountDown className='text-xl transition hover:scale-125 ease-linear cursor-pointer' onClick={handleDisplayHeighPriceFirst} />
+                                <FaSortAmountDownAlt className='text-xl transition hover:scale-125 ease-linear cursor-pointer' onClick={handleDisplayLowPriceFirst}/>
                             </div>
                         </div>
                     </div>

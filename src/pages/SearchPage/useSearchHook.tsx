@@ -37,7 +37,8 @@ export const useSearchHook = () => {
     }
 
     useEffect(() => {
-
+        window.scroll(0, 0)
+        
         const fetchBooksByName = async () => {
             try {
                 const res = await $api.get(`book/${searchType}`, { params: { q: searchQuery } })

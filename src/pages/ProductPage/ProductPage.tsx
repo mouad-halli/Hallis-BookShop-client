@@ -1,41 +1,11 @@
-import { Book, useProductPageHook } from './useProductPageHook'
-import { BsCheckCircleFill } from 'react-icons/bs'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import { decrementProductQuantity, incrementProductQuantity, selectCartItemQuantity } from '../../app/cartSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import { addProductToCart } from '../../api/cartAPI'
-import { handleError } from '../../api/error'
-import { selectUserId } from '../../app/userSlice'
-import { Children, useEffect } from 'react'
+import { useProductPageHook } from './useProductPageHook'
+import { Children } from 'react'
 import { motion } from 'framer-motion'
+import { Book } from '../../@types/book'
 
 export const ProductPage = () => {
 
-    const { book } = useProductPageHook()
-
-    const userId = useSelector(selectUserId)
-
-    const productQuantityInCart: number = useSelector((state: any) => selectCartItemQuantity(state.cart, book._id))
-
-    const navigate = useNavigate()
-
-    const dispatch = useDispatch()
-
-    const handleClick = async () => {
-        if (productQuantityInCart > 0)
-            return
-        if (book.stockCount === 0) 
-            return toast.warning('product out of stock')
-        dispatch(incrementProductQuantity(book._id))
-        try {
-            await addProductToCart(book._id)
-        } catch (error: unknown) {
-            console.log(error)
-            handleError(error)
-            dispatch(decrementProductQuantity(book._id))
-        }
-    }
+    const { book, userId, handleClick, productQuantityInCart, navigate } = useProductPageHook()
 
     return (
         <motion.div className='w-full min-h-screen'

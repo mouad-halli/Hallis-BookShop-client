@@ -1,6 +1,6 @@
 import { useSettingsHook } from "./useSettingsHook"
 
-export const Settings = () => {
+export const SettingsPage = () => {
 
     const {
         userData, addressData, handleUserDataChange,

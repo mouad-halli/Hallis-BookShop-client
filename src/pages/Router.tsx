@@ -3,7 +3,7 @@ import { ProductPage } from './ProductPage'
 import { Auth } from './Auth/index'
 import { ErrorPage } from './error-page'
 import App from '../App'
-import { Settings } from './Settings'
+import { SettingsPage } from './SettingsPage'
 import { Home } from './Home'
 import { Dashboard } from './Dashboard'
 import { SearchPage } from './SearchPage'
@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: 'settings',
-						element: <Settings />
+						element: <SettingsPage />
 					}
 				]
 			},
