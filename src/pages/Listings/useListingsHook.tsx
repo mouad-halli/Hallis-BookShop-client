@@ -9,6 +9,7 @@ export const useListingsHook = () => {
     const [listedBooks, setListedBooks] = useState<Book[]>([])
     const [indexOfBookToUpdate, setIndexOfBookToUpdate] = useState<number>(-1)
     const [reload, setReload] = useState<boolean>(false)
+    const [display, setDisplay] = useState('show')
 
     const handleDeleteBook = async (bookId: string) => {
 
@@ -38,12 +39,18 @@ export const useListingsHook = () => {
 
     const handleUpdateBook = (bookindex: number) => {
         setIndexOfBookToUpdate(bookindex)
+        setDisplay('update')
+    }
+
+    const handleCreateBook = () => {
+        setDisplay('create')
     }
 
     const handleReload = () => {
         setReload(!reload)
         setIndexOfBookToUpdate(-1)
+        setDisplay('show')
     }
 
-    return { listedBooks, handleDeleteBook, indexOfBookToUpdate, handleUpdateBook, handleReload }
+    return { display, listedBooks, handleDeleteBook, indexOfBookToUpdate, handleUpdateBook, handleCreateBook, handleReload }
 }

@@ -17,6 +17,7 @@ export const NavBar = () => {
     } =  useNavBarHook()
 
     return (
+        <>
         <motion.nav className=' z-10 flex w-full items-center h-24 justify-between px-4 gap-x-4'
             initial={{ y: -100 }}
             animate={{ y: 0 }}
@@ -114,5 +115,9 @@ export const NavBar = () => {
             }
             </div>
         </motion.nav>
+        {/* <div className=' z-30 fixed h-screen w-full top-24 bg-slate-50'>
+
+        </div> */}
+        </>
     )
 }

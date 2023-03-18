@@ -1,8 +1,8 @@
 import { HiPencil } from 'react-icons/hi'
 import { AiOutlineUser, AiOutlinePhone } from 'react-icons/ai'
 import { SiMaildotru } from 'react-icons/si'
-import { userAddress } from "../useCartAndCheckoutSidebarHook"
-import { IUser } from "../../../app/userSlice"
+import { IUser } from '../../../@types/user'
+import { userAddress } from '../../../@types/address'
 
 interface Propstype {
     user: IUser

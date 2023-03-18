@@ -14,7 +14,7 @@ export const Footer = () => {
                 </div>
                 <div className="flex flex-col gap-y-3 text-sm text-slate-600/90">
                     <h1 className=" text-gray-700 font-bold text-lg">Account</h1>
-                    <Link to={'profile'}>Dashboard</Link>
+                    <Link to={'dashboard'}>Dashboard</Link>
                     <Link to={'profile'}>Profile</Link>
                     <Link to={'/cart'}>Cart</Link>
                 </div>

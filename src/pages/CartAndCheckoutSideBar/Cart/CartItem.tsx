@@ -58,7 +58,7 @@ export const CartItem = (props: any) => {
         <div className=' h-full max-h-[25%] min-h-[25%] w-full flex border-b-[1px] mb-4 pb-4 pr-4 '>
             <img className='object-cover object-center h-full w-[28%] rounded cursor-pointer' src={product.imgPath} onClick={() => navigate(`/product/${product._id}`)} />
             <div className=' h-full w-[60%] flex flex-col justify-between text-sm font-medium py-1 pl-2'>
-                <div>
+                <div className='truncate'>
                     <h1>{product.name}</h1>
                     <span className='text-slate-500 text-xs font-normal'>{product.author}</span>
                 </div>

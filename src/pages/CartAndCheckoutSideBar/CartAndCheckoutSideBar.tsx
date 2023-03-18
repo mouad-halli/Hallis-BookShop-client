@@ -10,7 +10,7 @@ export const CartAndCheckoutSideBar = (props: any) => {
     } = useCartAndCheckoutSidebarHook(props)
 
     return (
-        <div className='h-full flex flex-col gap-y-6 py-2'>
+        <div className='h-full flex flex-col gap-y-6 pt-2 pb-6'>
             <div className=' h-[8%] mx-4 border-b-[1px] flex items-center justify-between px-2'>
                 {isCheckout ?
                     <div className='w-5/6 flex font-bold gap-x-[6.7rem]'>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
-import { useNavigate } from "react-router"
 import { handleError } from "../../api/error"
 import { createBook, setBookImage, updateBook } from "../../api/bookAPI"
 import { Book } from "../../@types/book"
@@ -54,14 +53,11 @@ const inputInitialState: bookInput = {
 
 interface Params {
     book?: Book,
-    reload?: () => void
+    reload: () => void
 }
 
 export const useCreateOrUpdateListingHook = ({book: bookToUpdate, reload}: Params) => {
 
-    const navigate = useNavigate()
-
-    const [bookImgPreview, setBookImgPreview] = useState<string>()
     const [bookImg, setBookImg] = useState<File>()
     const [bookData, setbookData] = useState<bookInput>(inputInitialState)
 
@@ -73,8 +69,6 @@ export const useCreateOrUpdateListingHook = ({book: bookToUpdate, reload}: Param
             const { _id, seller, imgPath , ...book } = bookToUpdate
             if (!book.description)
                 book.description = undefined
-            if (imgPath)
-                setBookImgPreview(imgPath)
             setbookData(book)
         }
 
@@ -91,7 +85,6 @@ export const useCreateOrUpdateListingHook = ({book: bookToUpdate, reload}: Param
         const newImg = e.target.files[0]
         if (!newImg)
             return
-        setBookImgPreview(URL.createObjectURL(newImg))
         setBookImg(newImg)
     }
 
@@ -104,12 +97,13 @@ export const useCreateOrUpdateListingHook = ({book: bookToUpdate, reload}: Param
         await setBookImage(bookImg, createdBookId)    
 
         toast.success('Book Posted successfully')
-        navigate('/dashboard/store/listings')
+
+        reload()
     }
 
     const handleUpdateBook = async () => {
 
-        if (!bookToUpdate || !reload)
+        if (!bookToUpdate)
             return
 
         await updateBook(bookData, bookToUpdate._id)
@@ -133,5 +127,5 @@ export const useCreateOrUpdateListingHook = ({book: bookToUpdate, reload}: Param
         } catch (error: unknown) { handleError(error) }
     }
 
-    return { bookData, bookImgPreview, Genres, Languages, handleChange, handleImgUpload, handleSubmit }
+    return { bookData, Genres, Languages, handleChange, handleImgUpload, handleSubmit }
 }

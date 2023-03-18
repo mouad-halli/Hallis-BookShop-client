@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router'
 import { handleError } from '../../api/error'
 import { selectUserId } from '../../app/userSlice'
-import { Book } from '../ProductPage/useProductPageHook'
+import { Book } from '../../@types/book'
 
 interface Props {
     book: Book

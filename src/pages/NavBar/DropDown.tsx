@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom'
-import { IUser, logOut } from '../../app/userSlice'
+import { logOut } from '../../app/userSlice'
 import { TbLogout, TbUser, TbBuildingStore, TbSettings } from 'react-icons/tb'
 import { $api } from '../../api/API'
 import { useDispatch } from 'react-redux'
 import { clearCart } from '../../app/cartSlice'
-import { GoPackage } from 'react-icons/go'
 import { MdOutlineDashboardCustomize } from 'react-icons/md'
 import { motion } from 'framer-motion'
 
@@ -47,7 +46,7 @@ export const DropDown = (props: any ) => {
     }
 
     return (
-        <motion.div className=' w-[12rem] flex flex-col gap-y-4 absolute -right-3 sm:right-6 top-20 py-6 px-4 shadow-md shadow-blue-300 drop-shadow bg-white rounded-md'
+        <motion.div className=' w-[12rem] flex flex-col gap-y-4 absolute -right-3 sm:right-6 top-20 py-6 px-4 shadow shadow-blue-300 drop-shadow-md bg-white rounded-md'
             initial="exit"
             animate={isComponentsVisible ? "enter" : "exit"}
             variants={subMenuAnimate}
@@ -58,13 +57,6 @@ export const DropDown = (props: any ) => {
             </div>
             <hr className=' w-full h-px' />
             <div className='flex flex-col gap-y-3 px-3'>
-                <Link to='dashboard/profile' className=' flex w-full items-center transition ease-linear hover:scale-[1.07] hover:font-medium hover:text-blue-600' onClick={() => setIsComponentVisible(false)} >
-                    <div className='w-5/6 flex items-center gap-x-2 '>
-                        <TbUser className='w-1/6'/>
-                        <h3 className=' w-5/6'>Profile</h3>
-                    </div>
-                    <span className='w-1/6 text-center'>{'>'}</span>
-                </Link>
                 <Link to='dashboard' className=' flex w-full items-center transition ease-linear hover:scale-[1.07] hover:font-medium hover:text-blue-600' onClick={() => setIsComponentVisible(false)} >
                     <div className='w-5/6 flex items-center gap-x-2 '>
                         <MdOutlineDashboardCustomize className='w-1/6'/>

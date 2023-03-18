@@ -1,26 +1,36 @@
 import { Children } from 'react'
 import { ListingItem } from './ListingItem'
 import { useListingsHook } from './useListingsHook'
-import { Book } from '../../@types/book'
 import { CreateOrUpdateListing } from '../CreateOrUpdateListing'
+import { AiOutlinePlus } from 'react-icons/ai'
+import { TbFileUpload } from 'react-icons/tb'
 
 export const Listings = () => {
 
-    const { listedBooks, handleDeleteBook, indexOfBookToUpdate, handleUpdateBook, handleReload } = useListingsHook()
+    const { display, listedBooks, handleDeleteBook, indexOfBookToUpdate, handleUpdateBook, handleCreateBook, handleReload } = useListingsHook()
 
     return (
-        <div className="h-full w-full flex justify-center items-center py-10 ">
-            {indexOfBookToUpdate < 0 ?
-                <div className="h-screen w-5/6 xl:w-4/6 flex justify-center items-center shadow-md rounded-md bg-white scrollbar-thin">
-                    <div className=' h-5/6 w-[80%] flex flex-wrap justify-center lg:justify-between gap-y-16'>
-                        {Children.toArray(listedBooks.map((item: Book, idx: number) => (
-                            <ListingItem book={item} deleteBook={handleDeleteBook} updateBook={handleUpdateBook} bookIndex={idx} />
-                        )))}
+        <div className="relative h-full min-h-screen w-full">
+            {display === 'show' &&
+            <div className='flex flex-col gap-y-10 py-10'>
+                <div className=' w-full flex items-center justify-between px-6 lg:px-20'>
+                    <h1 className=' text-xl md:text-3xl font-medium'>All Products</h1>
+                    <div
+                        className='flex items-center gap-x-2 py-3 font-medium px-4 rounded-lg bg-blue-600 text-white transition ease-linear hover:scale-110 cursor-pointer'
+                        onClick={handleCreateBook}
+                    >
+                        <AiOutlinePlus size={20} />
+                        <button className='hidden md:block'>Add Product</button>
                     </div>
                 </div>
-                :
-                <CreateOrUpdateListing book={listedBooks[indexOfBookToUpdate]} reload={handleReload} />
-            }
+                <div className='w-full h-full flex flex-wrap gap-x-20 gap-y-10 px-10 lg:px-20'>
+                    {Children.toArray(listedBooks.map((book, idx: number) => (
+                        <ListingItem book={book} deleteBook={handleDeleteBook} updateBook={handleUpdateBook} bookIndex={idx} />
+                    )))}
+                </div>
+            </div>}
+            {display === 'update' && <CreateOrUpdateListing book={listedBooks[indexOfBookToUpdate]} reload={handleReload} />}
+            {display === 'create' && <CreateOrUpdateListing reload={handleReload} />}
         </div>
     )
 }
