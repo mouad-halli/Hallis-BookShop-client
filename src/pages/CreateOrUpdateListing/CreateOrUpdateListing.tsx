@@ -14,10 +14,10 @@ export const CreateOrUpdateListing = (props: PropsType) => {
             <div className='w-full h-full flex flex-col items-center gap-y-10 md:gap-y-20 py-10'>
                 <div className=' w-full flex items-center justify-between px-8'>
                     <h1 className='text-xl md:text-3xl font-medium md:justify-self-center md:mx-auto'>{props.book ? 'Update' : 'Create'} Product</h1>
-                    <div className='flex items-center py-3 font-medium px-6 rounded-lg bg-blue-600 text-white transition ease-linear hover:scale-110 cursor-pointer'>
-                        <button className="hidden sm:block" onClick={props.reload}>Cancel</button>
-                        <button className="block sm:hidden" onClick={props.reload}>X</button>
-                    </div>
+                    {/* <div className='flex items-center py-3 font-medium px-6 rounded-lg bg-blue-600 text-white transition ease-linear hover:scale-110 cursor-pointer'> */}
+                        <button className="hidden sm:block py-3 font-medium px-6 rounded-lg bg-blue-600 text-white transition ease-linear hover:scale-110 cursor-pointer" onClick={props.reload}>Cancel</button>
+                        <button className="block sm:hidden py-3 font-medium px-6 rounded-lg bg-blue-600 text-white transition ease-linear hover:scale-110 cursor-pointer" onClick={props.reload}>X</button>
+                    {/* </div> */}
                 </div>
                 <div className="w-5/6 lg:w-4/6 h-full flex flex-col items-center">
                     <form className="w-full h-full flex flex-col gap-y-6" onSubmit={handleSubmit}>
@@ -103,9 +103,7 @@ export const CreateOrUpdateListing = (props: PropsType) => {
                             </div>
                         </div>
                         <div className=" flex items-center justify-center mt-8">
-                            <div className='flex items-center py-3 font-medium px-10 rounded-lg bg-blue-600 text-white transition ease-linear hover:scale-110 cursor-pointer'>
-                                <button>{props.book ? 'Update' : 'Create'}</button>
-                            </div>
+                            <button className=" px-10 py-3 rounded-lg font-medium  bg-blue-600 text-white transition ease-linear hover:scale-110">{props.book ? 'Update' : 'Create'}</button>
                         </div>
                     </form>
                 </div>
