@@ -22,7 +22,7 @@ export const useCartAndCheckoutSidebarHook = (params: any) => {
 
     const { setDisplay, reload } = params
 
-    useRedirectToPathWithCondition('not authenticated', '/auth')
+    useRedirectToPathWithCondition('notauthenticated', '/auth')
 
     const user: IUser = useSelector(selectUser)
 
@@ -33,6 +33,8 @@ export const useCartAndCheckoutSidebarHook = (params: any) => {
     const [isCheckout, setIsCheckout] = useState<boolean>(false)
 
     const [userAddress, setUserAddress] = useState<userAddress>()
+
+    const [isWaiting, setIsWaiting] = useState(false);
 
     const navigate = useNavigate()
 
@@ -47,10 +49,13 @@ export const useCartAndCheckoutSidebarHook = (params: any) => {
     }
 
     const handlePlaceOrder = async () => {
+        setIsWaiting(true)
         try {
             const stipeSessionUrl = await (await $api.post('/payment/create-stripe-checkout-session')).data
+        
             window.location.replace(stipeSessionUrl)
         } catch (error: unknown) { handleError(error) }
+        finally { setIsWaiting(false) }
     }
 
     useEffect(() => {
@@ -88,6 +93,6 @@ export const useCartAndCheckoutSidebarHook = (params: any) => {
         isCheckout, cartItems, handleNavigate, subTotal,
         handleRemoveProduct, handleSubTotalChange,handlePlaceOrder,
         handlePassToCheckout, setIsCheckout, setDisplay, userAddress,
-        user
+        user, isWaiting
     }
 }

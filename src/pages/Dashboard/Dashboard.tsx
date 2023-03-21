@@ -9,7 +9,7 @@ export const Dashboard = () => {
     const user = useSelector(selectUser)
 
 
-    useRedirectToPathWithCondition('not authenticated', '/auth')
+    useRedirectToPathWithCondition('notauthenticated', '/auth')
 
 
 

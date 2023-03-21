@@ -39,7 +39,7 @@ export const SettingsPage = () => {
                     <div className=" w-[45%] flex flex-col gap-y-2">
                         <span className="font-medium text-slate-700">Phone</span>
                         <input
-                            type="number" pattern="[0-9]*" min={0} placeholder="enter phone" name="phone" value={userData.phone ? userData.phone : ''} onChange={handleUserDataChange}
+                            type="text" pattern="^[0-9]{10,15}$" placeholder="enter phone" name="phone" value={userData.phone ? userData.phone : ''} onChange={handleUserDataChange}
                             className=" w-full bg-slate-100 rounded-md px-3 py-1 focus-within:outline-none ring-2 ring-slate-300 focus-within:ring-blue-300 placeholder:text-sm"
                         />
                     </div>
@@ -65,7 +65,7 @@ export const SettingsPage = () => {
                 </div>
             </form>
             <form className="w-5/6 sm:w-4/6 flex flex-col gap-y-4 " onSubmit={handleAddressFormSubmit}>
-                <h1 className="font-bold text-2xl text-slate-700">Address</h1>
+                <h1 className="font-bold text-2xl text-slate-700">Address Information</h1>
                 <div className="flex w-full justify-between">
                     <div className=" w-[45%] flex flex-col gap-y-2">
                         <span className="font-medium text-slate-700">Street 1</span>
@@ -101,7 +101,7 @@ export const SettingsPage = () => {
                 <div className=" w-[45%] flex flex-col gap-y-2 ">
                         <span className="font-medium text-slate-700">Zip Code</span>
                         <input
-                            type="number" pattern="[0-9]*" placeholder="enter zip code"  name="zipCode" value={addressData.zipCode ? addressData.zipCode : ''} onChange={handleAddressDataChange}
+                            type="text" placeholder="enter zip code"  name="zipCode" value={addressData.zipCode ? addressData.zipCode : ''} onChange={handleAddressDataChange}
                             className=" w-full bg-slate-100 rounded-md px-3 py-1 focus-within:outline-none ring-2 ring-slate-300 focus-within:ring-blue-300 placeholder:text-sm"
                         />
                 </div>

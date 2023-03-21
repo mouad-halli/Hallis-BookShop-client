@@ -28,6 +28,7 @@ const App = () => {
                     dispatch(setCart(cartItems))
                 }
             } catch (error: unknown) {
+                console.log('i remind you to check me')
                 dispatch(logOut())
                 dispatch(clearCart())
             }

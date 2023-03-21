@@ -7,14 +7,16 @@ import { userStatus } from "../@types/user"
 export const useRedirectToPathWithCondition = (condition: string, toLocation: string) => {
 
     const navigate = useNavigate()
+    
     const userConnStatus = useSelector(selectUserStatus)
 
     useEffect(() => {
         if (userConnStatus !== userStatus.FETCHING) {
-            if (condition === 'authenticated' && userConnStatus === userStatus.AUTHENTICATED )
+            // if (condition === 'authenticated' && userConnStatus === userStatus.AUTHENTICATED )
+            if (condition === userConnStatus )
                 navigate(toLocation)
-            else if (condition === 'not authenticated' && userConnStatus === userStatus.NOTAUTHENTICATED )
-                navigate(toLocation)
+            // else if (condition === 'not authenticated' && userConnStatus === userStatus.NOTAUTHENTICATED )
+            //     navigate(toLocation)
         }
     }, [userConnStatus])
 

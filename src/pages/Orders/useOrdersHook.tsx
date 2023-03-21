@@ -1,50 +1,27 @@
 import { useEffect, useState } from "react"
-import { $api } from "../../api/API"
-import { Book } from '../../@types/book'
-
-export enum paymentStatus {
-    SUCCEED = 'succeed',
-    FAILED = 'failed',
-    PENDING = 'pending',
-    REFUNDED = 'refunded'
-}
-
-interface Item {
-    product: Book
-    quantity: number
-}
-
-interface Order {
-    _id: string
-    items: Item[]
-    paymentStatus: paymentStatus
-    trackingNumber: number
-}
+import { Order } from "../../@types/order"
+import { handleError } from "../../api/error"
+import { getBuyOrders } from "../../api/orderAPI"
 
 export const useOrdersHook = () => {
 
     const [orders, setOrders] = useState<Order[]>([])
 
-    const [ orderToDisplayIndex, setOrderToDisplayIndex ] = useState(null)
-
     useEffect(() => {
+
         try {
+            
             const fetchUserOrders = async () => {
-                const response = await $api.get('/order')
-                const orders = response.data
-                console.log(orders)
+                const orders = await getBuyOrders()
                 if (orders)
                     setOrders(orders)
             }
+
             fetchUserOrders()
-        } catch (error) {
-            console.log(error)
-        }
+            
+        } catch (error: unknown) { handleError(error) }
+
     }, [])
 
-    const handleDisplayOrderDetails = (orderIndex: Number) => {
-        setOrderToDisplayIndex(orderIndex)
-    }
-
-    return { orders, handleDisplayOrderDetails, orderToDisplayIndex }
+    return { orders }
 }

@@ -44,6 +44,9 @@ export const useSettingsHook = () => {
                 if (user && user._id)
                     delete user._id
 
+                if (user && user.address)
+                    delete user.address
+
                 if (user)
                     setUserData({...userData, ...user})
                 if (userAddress) {
@@ -58,11 +61,16 @@ export const useSettingsHook = () => {
 
     }, [])
 
+    const isValidZipCode = (str: string) => {
+
+        return /^\d{5}(-\d{4})?$/.test(str);
+
+    }
+
     const handleUpdateProfileSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
             const updatedData = await updateUserData(userData)
-
             dispatch(updateUser(updatedData))
             toast.success('profile updated successfully')
 
@@ -73,6 +81,8 @@ export const useSettingsHook = () => {
     const handleAddressFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
+            // if ( !addressData.zipCode || !isValidZipCode(addressData.zipCode))
+            //     toast.error('invalid zip code')
             if (isAddressExist) {
                 await updateUserAddress(addressData)
                 toast.success('address updated successfully')

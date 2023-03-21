@@ -1,4 +1,3 @@
-import { UserDto } from "../app/userSlice"
 import { $api } from "./API"
 
 export const getUserData = async () => {
