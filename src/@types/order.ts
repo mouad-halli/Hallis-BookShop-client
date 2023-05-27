@@ -15,4 +15,5 @@ export interface Order {
     paymentStatus: string
     address: userAddress
     trackingNumber: string
+    createdAt: string
 }

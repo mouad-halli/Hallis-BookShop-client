@@ -1,4 +1,4 @@
-import { Book } from "../pages/ProductPage/useProductPageHook"
+import { Book } from "../@types/book"
 import { $api } from "./API"
 
 export const fetchBook = async (bookId: string) => {

@@ -16,7 +16,7 @@ export const Dashboard = () => {
     return (
         <div className='h-full min-h-screen w-full flex box-border'>
             <DashboardSideBar user={user} />
-            <div className='h-full w-full md:w-5/6 flex mx-4 bg-white rounded-lg'>
+            <div className='h-full w-full md:w-5/6 flex mx-4 bg-white rounded-lg '>
                 <Outlet />
             </div>
         </div>

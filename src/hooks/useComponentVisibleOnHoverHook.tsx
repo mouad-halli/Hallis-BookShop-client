@@ -8,7 +8,6 @@ export const useComponentVisibleOnHoverHook = (initialIsVisible: boolean) => {
 
     const handleClickOutside = (event: any) => {
         if (ref.current && !ref.current.contains(event.target)) {
-            console.log('click outside')
             setIsComponentVisible(false)
         }
         // else if ((ref.current && !ref.current.contains(event.target) && !ref.current.contains(event.target.firstChild)))
